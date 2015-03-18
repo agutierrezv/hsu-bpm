@@ -4,7 +4,7 @@ module.exports = {
     },
     'webhooks' : {
     	'notify' : {
-    		'baseUrl': 'hsu-api.herokuapp.com',
+    		'baseUrl': 'hsu.herokuapp.com',
     		'port': 443,
     		'path': '/api/prestacionUpdateStatus/',
     		'method': 'post',
