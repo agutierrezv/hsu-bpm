@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HSU Tramitador</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	<body ng-app="myApp">
+		<div id="wrapper">
+			<div id="header">
+				<ul class="nav navbar-inverse nav-tabs">
+					<li><a class="mainMenu" href="#/">HSU Tramitador</a></li>
+					<li ng-show="isLogged"><a class="mainMenu" href="#/logout">Cerrar sesión</a></li>				
+				</ul>
+			</div>
+
+			<div  id="content" class="container-fluid content" ng-view>
+			</div>
+
+			<footer id="footer" class="footer navbar-bottom text-center">
+				Construido con 
+				<a href="https://appnow.radarconline.com"><img src="images/appnow-logo.png" alt="AppNow"/></a> 
+				de
+				<a href="http://icinetic.com"><img src="images/icinetic-logo.png" alt="Icinetic"/></a>
+			</footer>
+		</div>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>		
+
+		<script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.3.3/dist/textAngular-rangy.min.js'></script>
+		<script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.3.3/dist/textAngular-sanitize.min.js'></script>
+		<script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.3.3/dist/textAngular.min.js'></script>	
+
+		<script src="app/lib/xlsx.full.min.js"></script>		
+
+		<script src="app/app.js"></script>
+		<script src="app/services/authService.js"></script>
+		<script src="app/services/sessionService.js"></script>
+		<script src="app/services/urlService.js"></script>
+		<script src="app/services/navigationService.js"></script>
+		<script src="app/services/importService.js"></script>
+		<script src="app/services/metadataService.js"></script>
+		<script src="app/services/csvService.js"></script>
+		<script src="app/services/xlsxService.js"></script>		
+
+		<script src="app/services/tramite/tramiteService.js"></script>
+
+		<script src="app/controllers/main.js"></script>
+		<script src="app/controllers/login.js"></script>
+		<script src="app/controllers/logout.js"></script>
+		<script src="app/controllers/import.js"></script>	
+	
+		<script src="app/controllers/tramite/list.js"></script>
+		<script src="app/controllers/tramite/select.js"></script>
+		<script src="app/controllers/tramite/edit.js"></script>
+		<script src="app/controllers/tramite/delete.js"></script>		
+		<script src="app/controllers/tramite/view.js"></script>
+
+
+		<script src="app/directives/fileread.js"></script>
+		<script src="app/directives/dateSelector.js"></script>
+		<script src="app/directives/timeSelector.js"></script>
+		<script src="app/directives/datetimeSelector.js"></script>
+		<script src="app/directives/htmlCellDisplay.js"></script>
+
+		<script src="app/filters/checkmark.js"></script>
+
+	</body>
+</html>

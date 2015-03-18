@@ -1,0 +1,11 @@
+class Tramite
+{
+	string Type;
+	string? Origin;
+	string? OriginId;
+	date    Created;
+	date    LastModified;
+	string  State;
+	string? Description;
+	string? AssignedTo;
+}

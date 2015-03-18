@@ -1,0 +1,64 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="form-vertical text-left" name="editForm">
+			<h3 class="text-center">Eliminar trámite</h3>
+			<fieldset ng-show="dataReceived">
+
+				<div class="form-group">
+					<label for="inputType">Tipo</label>
+					<input id="inputType" type="text" class="form-control" placeholder="Type" ng-model="tramite.type" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputOrigin">Origen</label>
+					<input id="inputOrigin" type="text" class="form-control" placeholder="Origin" ng-model="tramite.origin" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputOriginId">Id de origen</label>
+					<input id="inputOriginId" type="text" class="form-control" placeholder="OriginId" ng-model="tramite.originId" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputCreated">Creado el </label>
+					<date-selector id="inputCreated" 
+					               placeholder="Created" 
+				                   value="tramite.created"
+					               opts=" readonly" /> 
+				</div>
+
+				<div class="form-group">
+					<label for="inputLastModified">Última modificación</label>
+					<date-selector id="inputLastModified" 
+					               placeholder="LastModified" 
+				                   value="tramite.lastModified"
+					               opts=" readonly" /> 
+				</div>
+
+				<div class="form-group">
+					<label for="inputState">Estado</label>
+					<input id="inputState" type="text" class="form-control" placeholder="State" ng-model="tramite.state" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputDescription">Descripción</label>
+					<input id="inputDescription" type="text" class="form-control" placeholder="Description" ng-model="tramite.description" readonly />
+				</div>
+
+				<div class="form-group">
+					<label for="inputAssignedTo">Asignado a</label>
+					<input id="inputAssignedTo" type="text" class="form-control" placeholder="AssignedTo" ng-model="tramite.assignedTo" readonly />
+				</div>
+
+				<div class="form-group">
+					<button class="btn btn-danger" ng-click="delete($event)" ng-disabled="editForm.$invalid" >Eliminar</button>
+					<button class="btn" ng-click="cancel($event)" >Cancelar</button>
+				</div>
+			</fieldset>
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+		</form>
+
+	</div>
+	<div class="col-md-4"></div>
+</div>

@@ -1,0 +1,115 @@
+<div class="row">
+	<div class="col-md-12">
+	
+		<table id="caption" class="table">
+			<tr>
+				<td class="text-left">
+					<a class="iconBig" href ng-click="add()" ><span class="glyphicon glyphicon-plus"></span></a>
+				</td>
+				<td class="text-center">
+					<h3><span>Tramites</span></h3>
+				</td>
+				<td class="text-right">
+				  <a class="iconBig" href ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span></a>
+				</td>
+			</tr>
+		</table>
+
+		<div class="upperTableZone">
+			<div class="btn-group cursor-pointer" dropdown is-open="status.isopen">
+				<button type="button" class="btn btn-primary dropdown-toggle btn-sm">
+				Acciones <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a data-ng-click="importData()"><span class="glyphicon glyphicon-import"></span> Importar datos desde CSV o XLSX</a></li>
+					<li class="divider"></li>
+					<li><a data-ng-click="exportAsXlsx()"><span class="glyphicon glyphicon-export"></span> Exportar como XLSX</a></li>
+					<li><a data-ng-click="exportAsCsv()"><span class="glyphicon glyphicon-export"></span> Exportar como CSV</a></li>
+					<li><a data-ng-click="exportAsXml()"><span class="glyphicon glyphicon-export"></span> Exportar como XML</a></li>
+					
+					<li ng-hide="noneSelected" class="divider"></li>
+					<li ng-hide="noneSelected"><a class="error" data-ng-click="deleteSelected()"><span class="glyphicon glyphicon-remove error"></span> Eliminar seleccionados: {{getSelectedItems().length}} items</a></li>
+					<li class="divider"></li>
+					<li><a class="error" data-ng-click="deleteAll()"><span class="glyphicon glyphicon-remove error"></span> Eliminar todos los filtrados: {{totalItems}} items</a></li>
+				</ul>
+			</div>
+			<div class="searchZone">
+				<div class="btn-group" role="group">
+					<button class="btn btn-default" ng-click="filterBy('iniciado')">pendientes</button>
+					<button class="btn btn-default" ng-click="filterBy('concedido')">concedidos</button>
+					<button class="btn btn-default" ng-click="filterBy('denegado')">denegados</button>
+					<button class="btn btn-default" ng-click="filterBy(null)">todos</button>
+				</div>
+				<input id="searchTextbox" type="string" data-ng-model="searchText" data-ng-change="refresh()" placeholder="search criteria">
+				<button class="btn btn-sm" data-ng-click="clearSearch()" data-ng-hide="searchText=='' || searchText==null">Limpiar</button>
+			</div>
+			<div class="foundZone">
+				<span data-ng-show="totalItems>1">{{totalItems}} elementos.</span>
+				<span data-ng-show="totalItems==1">Un elemento encontrado.</span>
+				<span data-ng-show="totalItems==0">Sin datos.</span>
+			</div>
+		</div>
+
+		<table id="itemList" class="data-tabe table table-hover table-striped table-condensed" ng-show="dataReceived">
+			<thead>
+				<th>
+					<input type="checkbox" data-ng-model="allSelected" data-ng-click="selectAll($event)" tooltip="Select/Unselect all">
+				</th>				
+				<th>Tipo</th>
+				<th>Origen</th>
+				<th>Id en origen</th>
+				<th>Creado</th>
+				<th>Ultima modificación</th>
+				<th>Estado</th>
+				<th>Descripción</th>
+				<th>Asignado a</th>
+				
+				<th></th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="tramite in dataList">
+					<td>
+						<input type="checkbox" data-ng-model="tramite._isSelected" data-ng-click="selectItem(tramite, $event)">
+					</td>			
+					<td class="data"><a ng-click="view(tramite)">{{tramite.type}}</a></td>
+					<td class="data">{{tramite.origin}}</td>
+					<td class="data">{{tramite.originId}}</td>
+					<td class="data">{{tramite.created | date:'yyyy.MM.dd'}}</td>
+					<td class="data">{{tramite.lastModified | date:'yyyy.MM.dd'}}</td>
+					<td class="data">{{tramite.state}}</td>
+					<td class="data">{{tramite.description}}</td>
+					<td class="data">{{tramite.assignedTo}}</td>
+					
+					<td><a href ng-click="view(tramite)"><span class="glyphicon glyphicon-th-list" tooltip="Detail"></span></a></td>
+					<td><a href ng-click="edit(tramite)"><span class="glyphicon glyphicon-edit" tooltip="Edit"></span></a></td>
+					<td><a href ng-click="delete(tramite)"><span class="glyphicon glyphicon-remove error" tooltip="Delete"></span></a></td>
+				</tr>
+			</tbody>
+		</table>			
+		
+		<div ng-show="dataReceived" class="text-center">
+			<!--<div style="display: inline; vertical-align: middle;">
+				<label for="pageSize">Page Size: </label>
+				<select id="pageSize" data-ng-model="pageSize">
+					<option>10</option>
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+				</select>
+			</div> -->
+			<div>
+				<pagination max-size="10" boundary-links="true" 
+				            total-items="totalItems" items-per-page="pageSize" data-ng-model="currentPage" 
+							data-ng-change="loadCurrentPage()"
+							previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+				</pagination>
+			</div>
+		</div>			
+		<div ng-show="!dataReceived" class="loader">
+			<img src="images/loader.gif" alt="Loading..." />
+		</div>
+
+	</div>
+</div>
