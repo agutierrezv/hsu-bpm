@@ -19,7 +19,7 @@
     "express-session": "^1.7.6",
     "grunt": "^0.4.5",
     "iron_mq": "^0.2.3",
-    "mongoose": "^3.8.15",
+    "mongoose": "^4.1.19",
     "morgan": "^1.2.3",
     "q": "^1.0.1",
     "tmp": "0.0.24",
